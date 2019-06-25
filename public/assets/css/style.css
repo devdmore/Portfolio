@@ -569,12 +569,213 @@ footer {
 /* devendra css starts */
 #root, .App{min-height: 100vh; }
 header{
-	min-height: 80vh; 
+	min-height: 79vh; 
 	display: flex;
     justify-content: center;
     align-items: center;
 }
 .bigheadline{ font-size:9em; }
+@import url('https://fonts.googleapis.com/css?family=Pacifico|Open+Sans:300');
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.outer-menu {
+  position: absolute;
+  top: 2vh;
+  right: 2vh;
+  z-index: 1;
+}
+.outer-menu .checkbox-toggle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  opacity: 0;
+}
+.outer-menu .checkbox-toggle:checked + .hamburger > div {
+  transform: rotate(135deg);
+}
+.outer-menu .checkbox-toggle:checked + .hamburger > div:before,
+.outer-menu .checkbox-toggle:checked + .hamburger > div:after {
+  top: 0;
+  transform: rotate(90deg);
+}
+.outer-menu .checkbox-toggle:checked + .hamburger > div:after {
+  opacity: 0;
+}
+.outer-menu .checkbox-toggle:checked ~ .menu {
+  pointer-events: auto;
+  visibility: visible;
+}
+.outer-menu .checkbox-toggle:checked ~ .menu > div {
+  transform: scale(1);
+  transition-duration: .75s;
+}
+.outer-menu .checkbox-toggle:checked ~ .menu > div > div {
+  opacity: 1;
+  transition: opacity 0.4s ease 0.4s;
+}
+.outer-menu .checkbox-toggle:hover + .hamburger {
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.outer-menu .checkbox-toggle:checked:hover + .hamburger > div {
+  transform: rotate(225deg);
+}
+.outer-menu .hamburger {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 60px;
+  height: 60px;
+  padding: .5em 1em;
+  background:none;
+  border-radius: 0 0.12em 0.12em 0;
+  cursor: pointer;
+  transition: box-shadow 0.4s ease;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.outer-menu .hamburger > div {
+  position: relative;
+  flex: none;
+  width: 100%;
+  height: 2px;
+  background: #fefefe;
+  transition: all 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.outer-menu .hamburger > div:before,
+.outer-menu .hamburger > div:after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: inherit;
+  transition: all 0.4s ease;
+}
+.outer-menu .hamburger > div:after {
+  top: 10px;
+}
+.outer-menu .menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  visibility: hidden;
+  overflow: hidden;
+  backface-visibility: hidden;
+  outline: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.outer-menu .menu > div {
+  width: 200vw;
+  height: 200vw;
+  color: #fefefe;
+  background: rgba(0, 0, 0, 0.87);
+  border-radius: 50%;
+  transition: all 0.4s ease;
+  flex: none;
+  transform: scale(0);
+  backface-visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.outer-menu .menu > div > div {
+  text-align: center;
+  max-width: 90vw;
+  max-height: 100vh;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  overflow-y: auto;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.outer-menu .menu > div > div > ul {
+  list-style: none;
+  padding: 0 1em;
+  margin: 0;
+  display: block;
+  max-height: 100vh;
+  overflow: hidden;
+}
+.outer-menu .menu > div > div > ul > li {
+  padding: 0;
+  margin: 1em;
+  font-size: 40px;
+  display: block;
+  opacity: 0;
+  /*will-change: transform, opacity;*/
+  transform: translateY(100px);
+  transition: all 0.4s ease-out;
+}
+.outer-menu .menu > div > div > ul > li.visible {
+	transform: translateY(0);
+	opacity: 1;
+}
+.outer-menu .menu > div > div > ul > li:nth-child(1) {
+transition-delay: 0.1s;
+}
+.outer-menu .menu > div > div > ul > li:nth-child(2) {
+transition-delay: 0.3s;
+}
+.outer-menu .menu > div > div > ul > li:nth-child(3) {
+transition-delay: 0.5s;
+}
+.outer-menu .menu > div > div > ul > li:nth-child(4) {
+transition-delay: 0.7s;
+}
+.outer-menu .menu > div > div > ul > li:nth-child(5) {
+transition-delay: 0.9s;
+}
+.outer-menu .menu > div > div > ul > li > a > i {
+    top: 5px;
+    position: relative;
+}
+.outer-menu .menu > div > div > ul > li > a {
+  position: relative;
+  display: inline;
+  cursor: pointer;
+  transition: color 0.4s ease;
+}
+.outer-menu .menu > div > div > ul > li > a:hover {
+  color: #e5e5e5;
+}
+.outer-menu .menu > div > div > ul > li > a:hover:after {
+  width: 100%;
+}
+.outer-menu .menu > div > div > ul > li > a:after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  bottom: -0.15em;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #e5e5e5;
+  transition: width 0.4s ease;
+}
+
 /* devendra css ends */
 
 
@@ -681,16 +882,8 @@ header{
 	}
 }
 @media all and (max-width: 380px) {
-
-
-	.logo-text {
-	    font-size: 2em;
-	}
 	.centered p {
 	    font-size: 1em;
-	}
-	.bigheadline {
-	    font-size: 4em;
 	}
 	.subheadline {
 	    font-family: 'Titillium Web',sans-serif;
@@ -714,4 +907,33 @@ header{
 	    top: 70%;
 	    left: 44%;
 	}
+	.outer-menu{
+		right: 13vh;
+	}
+	.outer-menu .menu > div > div > ul > li{
+		font-size:24px;
+	}
+	.copyright{
+		padding: 10px 0 5px;
+	}
+	.designed{
+		padding: 5px 0 10px;
+	}
+	header{
+		min-height: 70vh;
+	}
+	.bigheadline {
+		font-size: 4em;
+		padding-bottom: 0.3em;
+	}
+	.outer-menu .hamburger{
+		width: 30px;
+		padding: 0;
+	}
+	.logo-text {
+	    font-size: 2em;
+	}
+}
+@media all and (max-width: 480px) and (orientation: landscape){
+	.outer-menu{right: 20vh;}
 }
